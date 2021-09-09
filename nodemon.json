@@ -1,0 +1,8 @@
+{
+    "env": {
+        "DB_USER": "drashtikheni",
+        "DB_PASSWORD": "Drashti25",
+        "DB_NAME": "auction_system",
+        "JWT_KEY": "supersecret_dont_share"
+    }
+}
