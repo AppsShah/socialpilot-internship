@@ -44,7 +44,9 @@ const findPlacesByUserId = async (req, res, next) =>
 
 const createPlace = async (req, res, next) =>
 {
+    console.log("running this function ")
     const errors = validationResult(req)
+    console.log(req.body.creator)
 
     if (!errors.isEmpty()) next(new HttpError("Invalid inputs passed, please check your inputs!"))
 
@@ -73,7 +75,7 @@ const createPlace = async (req, res, next) =>
         description,
         location: coordinates,
         image: req.file.path,
-        address,
+        price:req.body.address,
         creator: creator
     });
 
@@ -110,7 +112,7 @@ const updatePlace = async (req, res, next) =>
         return next(new HttpError("Could not fetch data with given auction id!", 500))
     }
 
-    if (place.creator.toString() !== req.userData.userId) return next(new HttpError("You are not allowed to perform this action", 401))
+    // if (place.creator.toString() !== req.userData.userId) return next(new HttpError("You are not allowed to perform this action", 401))
 
     place.title = title
     place.description = description
@@ -138,8 +140,7 @@ const deletePlace = async (req, res, next) =>
     }
 
     if (!place || place.length === 0) return next(new HttpError("Couldn't find auction with provided id", 404))
-
-    if (place.creator.id.toString() !== req.userData.userId) return next(new HttpError("You are not allowed to delete", 401))
+//   if (place.creator.id.toString() !== req.userData.userId) return next(new HttpError("You are not allowed to delete", 401))
 
     const imagePath = place.image
     try {

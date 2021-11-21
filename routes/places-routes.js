@@ -10,7 +10,7 @@ const router = express.Router()
 router.get("/:pid", placeControllers.findPlaceById)
 router.get("/user/:uid", placeControllers.findPlacesByUserId)
 
-router.use(checkAuth)
+//router.use(checkAuth)
 
 router.post(
     "/",
