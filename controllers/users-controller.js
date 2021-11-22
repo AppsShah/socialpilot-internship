@@ -5,8 +5,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const HttpError = require("../models/http-errors");
 
-const getUsers = async (req, res, next) =>
-{
+const getUsers = async (req, res, next) => {
   let users;
 
   try {
@@ -20,8 +19,7 @@ const getUsers = async (req, res, next) =>
     .json({ users: users.map((user) => user.toObject({ getters: true })) });
 };
 
-const signup = async (req, res, next) =>
-{
+const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty())
     return next(
@@ -58,7 +56,7 @@ const signup = async (req, res, next) =>
     email,
     password: hashedPassword,
     image: req.file.path,
-    places:  [],
+    auctions: [],
   });
   console.log(req.file);
 
@@ -77,7 +75,7 @@ const signup = async (req, res, next) =>
       new HttpError("Coudn't create user due to non generation of token", 500)
     );
   }
-  console.log(createdUser)
+  console.log(createdUser);
   try {
     await createdUser.save();
   } catch (error) {
@@ -93,8 +91,8 @@ const signup = async (req, res, next) =>
   });
 };
 
-const login = async (req, res, next) =>
-{
+const login = async (req, res, next) => {
+  console.log(req.body);
   const errors = validationResult(req);
   if (!errors.isEmpty())
     return next(
