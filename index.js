@@ -9,7 +9,6 @@ const { resetpassword } = require("./validator/resetpassword");
 const { createpostvalidator } = require("./validator/createpostvalidator");
 const { deletepostvalidator } = require("./validator/deletepostvalidator");
 const { updatepostvalidator } = require("./validator/updatepostvalidator");
-const { viewpostcontroller } = require("./controller/viewpostcontroller");
 const { viewpostvalidator } = require("./validator/viewpostvalidator");
 const { deleteaccountvalidator } = require("./validator/deleteaccountvalidator");
 const { getlistvalidator } = require("./validator/getlistvalidator");
@@ -33,28 +32,6 @@ router.get("/",async(ctx)=>{
     connectToCluster()
 })
 
-router.post("/signup",async(ctx)=>{
-    ctx.body="Inside Signup"
-    const d=await signupvalidator(ctx)
-    console.log(d)
-})
-
-router.post("/login",async(ctx)=>{
-    ctx.body="Inside Login"
-    loginvalidator(ctx)
-    
-})
-
-router.post('/forgetpassword',(ctx)=>{
-    ctx.body="You are in forget Page"
-    forgetpassword(ctx)
-})
-
-router.post("/resetpassword",async (ctx)=>{
-    console.log("resetpassword")
-    ctx.body="Welcome to reset password"
-    resetpassword(ctx)
-})
 
 router.post("/createpost",async (ctx)=>{
     ctx.body="into create post"

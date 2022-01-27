@@ -1,6 +1,5 @@
 const {
-  createpostcontroller,
-  findtitlecontroller,
+  createpostcontroller
 } = require("../controller/createpostcontroller");
 const validator = require("validator");
 const { logindata } = require("../db/query");

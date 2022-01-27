@@ -1,5 +1,5 @@
 const mongoclient = require("../db/connection");
-async function isEmailindb(email) {
+const isEmailindb=(email)=> {
   try {
     // mongoclient=await connection()
     console.log("Email Findiing");
