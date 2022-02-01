@@ -3,7 +3,7 @@ const key="HelloAppsHowAreYouAreYouFine"
 
 
 const generatetoken=(token)=>{
-    return jwt.sign(token,key,{ expiresIn: '24h' })
+    return jwt.sign(token,key,{ expiresIn:"24h"})
  }
 
  const verifytoken=(token)=>{

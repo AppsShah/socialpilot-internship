@@ -86,24 +86,19 @@ const deleteaccountfrom = async (email) =>
     .collection("signuptable")
     .deleteOne({ email });
 
-const getlist = async (skip, limit) =>
+const getlist = async (skip, limit,email) =>
   mongoclient
     .db("internship-todolist")
     .collection("todo")
-    .find({})
+    .find({email})
     .limit(limit)
-    .skip(skip);
+    .skip(skip).toArray();
 
-const searchpost = async (keyword) =>
+const searchpost = async (keyword,email) =>
   mongoclient
     .db("internship-todolist")
     .collection("todo")
-    .find({
-      $or: [
-        { title: { $regex: `${keyword}` } },
-        { description: { $regex: `${keyword}` } },
-      ],
-    })
+    .find({$and:[{email:email}],$or:[{ title: { $regex: `${keyword}` } },{ description: { $regex: `${keyword}` } }]})
     .toArray();
 
 module.exports = {

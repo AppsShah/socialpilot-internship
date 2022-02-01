@@ -1,7 +1,6 @@
 const { createpost } = require("../../db/query")
-
 const createpostcontroller=async(ctx)=>{
-    const email=ctx.request.body.email
+    const email=ctx.state.email.email
     const title=ctx.request.body.title
     const status=ctx.request.body.status || "TODO"
     const des=ctx.request.body.description || "Nothing"
